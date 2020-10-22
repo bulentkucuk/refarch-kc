@@ -419,11 +419,11 @@ class E2EHappyPath(unittest.TestCase):
         self.assertIsNotNone(kc.consumer)
         # Read next event in the topic by key
         # BK: DEBUG
-        # container_event = kc.pollNextEventByKey(CONTAINER_ID)
-        # # Remove timestamp as it is not important for integration tests and would be hard to calculate
-        # container_event['timestamp'] = ""
-        # print("This is the container assigned to order event read from the containers topic:")
-        # print(json.dumps(container_event, indent=4, sort_keys=True))
+        container_event = kc.pollNextEventByKey(CONTAINER_ID)
+        # Remove timestamp as it is not important for integration tests and would be hard to calculate
+        container_event['timestamp'] = ""
+        print("This is the container assigned to order event read from the containers topic:")
+        print(json.dumps(container_event, indent=4, sort_keys=True))
         # Close the Kafka/Event Streams consumer
         kc.close()
         print("Done\n")
@@ -431,7 +431,7 @@ class E2EHappyPath(unittest.TestCase):
         print("3 - Verify container assigned to order event")
         # Verify container assigned to order event read from the topic is as expected
         # BK: DEBUG
-        #self.assertEqual(sorted(expected_container.items()),sorted(container_event.items()))
+        self.assertEqual(sorted(expected_container.items()),sorted(container_event.items()))
         print("Done\n")
 
         print("4 - Load the expected container allocated event on the order topic from its json files")
