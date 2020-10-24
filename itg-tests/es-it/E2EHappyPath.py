@@ -182,9 +182,7 @@ class E2EHappyPath(unittest.TestCase):
         # Verify the consumer has been created
         self.assertIsNotNone(kc.consumer)
         # Read next event in the topic by key
-        # BK
         read_container = kc.pollNextEventByKey(CONTAINER_ID)
-        # read_container = kc.pollNextEvent(CONTAINER_ID, "containerID")
         # A container event object is read
         self.assertIsNotNone(read_container)
         print("This is the container event read:")
@@ -420,7 +418,6 @@ class E2EHappyPath(unittest.TestCase):
         # Verify the consumer has been created
         self.assertIsNotNone(kc.consumer)
         # Read next event in the topic by key
-        # BK: DEBUG
         container_event = kc.pollNextEventByKey(CONTAINER_ID)
         # Remove timestamp as it is not important for integration tests and would be hard to calculate
         container_event['timestamp'] = ""
@@ -432,7 +429,6 @@ class E2EHappyPath(unittest.TestCase):
 
         print("3 - Verify container assigned to order event")
         # Verify container assigned to order event read from the topic is as expected
-        # BK: DEBUG
         self.assertEqual(sorted(expected_container.items()),sorted(container_event.items()))
         print("Done\n")
 
@@ -542,13 +538,12 @@ class E2EHappyPath(unittest.TestCase):
         # Verify the consumer has been created
         self.assertIsNotNone(kc.consumer)
         # Read next event in the topic by key
-        #BK
-        #voyage_assigned = kc.pollNextEventByKey(ORDER_ID)
-        ## Remove timestamp as it is not important for integration tests and would be hard to calculate
-        #voyage_assigned['timestamp'] = ""
-        #print("This is the event read from the order topic:")
-        #print(json.dumps(voyage_assigned, indent=4, sort_keys=True))
-    
+        voyage_assigned = kc.pollNextEventByKey(ORDER_ID)
+        # Remove timestamp as it is not important for integration tests and would be hard to calculate
+        voyage_assigned['timestamp'] = ""
+        print("This is the event read from the order topic:")
+        print(json.dumps(voyage_assigned, indent=4, sort_keys=True))
+        
         # Close the Kafka/Event Streams consumer
         kc.close()
         print("Done\n")
