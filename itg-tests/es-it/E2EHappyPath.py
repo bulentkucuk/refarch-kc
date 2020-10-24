@@ -183,8 +183,8 @@ class E2EHappyPath(unittest.TestCase):
         self.assertIsNotNone(kc.consumer)
         # Read next event in the topic by key
         # BK
-        # read_container = kc.pollNextEventByKey(CONTAINER_ID)
-        read_container = kc.pollNextEvent(CONTAINER_ID, "containerID")
+        read_container = kc.pollNextEventByKey(CONTAINER_ID)
+        # read_container = kc.pollNextEvent(CONTAINER_ID, "containerID")
         # A container event object is read
         self.assertIsNotNone(read_container)
         print("This is the container event read:")
@@ -542,11 +542,13 @@ class E2EHappyPath(unittest.TestCase):
         # Verify the consumer has been created
         self.assertIsNotNone(kc.consumer)
         # Read next event in the topic by key
-        voyage_assigned = kc.pollNextEventByKey(ORDER_ID)
-        # Remove timestamp as it is not important for integration tests and would be hard to calculate
-        voyage_assigned['timestamp'] = ""
-        print("This is the event read from the order topic:")
-        print(json.dumps(voyage_assigned, indent=4, sort_keys=True))
+        #BK
+        #voyage_assigned = kc.pollNextEventByKey(ORDER_ID)
+        ## Remove timestamp as it is not important for integration tests and would be hard to calculate
+        #voyage_assigned['timestamp'] = ""
+        #print("This is the event read from the order topic:")
+        #print(json.dumps(voyage_assigned, indent=4, sort_keys=True))
+    
         # Close the Kafka/Event Streams consumer
         kc.close()
         print("Done\n")
