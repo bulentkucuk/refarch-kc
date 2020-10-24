@@ -182,7 +182,9 @@ class E2EHappyPath(unittest.TestCase):
         # Verify the consumer has been created
         self.assertIsNotNone(kc.consumer)
         # Read next event in the topic by key
-        read_container = kc.pollNextEventByKey(CONTAINER_ID)
+        # BK
+        # read_container = kc.pollNextEventByKey(CONTAINER_ID)
+        read_container = kc.pollNextEvent(CONTAINER_ID, "containerID")
         # A container event object is read
         self.assertIsNotNone(read_container)
         print("This is the container event read:")
