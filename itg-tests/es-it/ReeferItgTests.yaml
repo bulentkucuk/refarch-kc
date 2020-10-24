@@ -100,7 +100,7 @@ spec:
               echo '******************************************'
               echo '******************************************'
 
-              python -u Saga_NoContainer.py
+              #BK python -u Saga_NoContainer.py
 
               echo '******************************************'
               echo '******************************************'
@@ -108,7 +108,7 @@ spec:
               echo '******************************************'
               echo '******************************************'
 
-              python -u Saga_NoVoyage.py && source /tmp/SagaNoVoyage.properties
+              #BK python -u Saga_NoVoyage.py && source /tmp/SagaNoVoyage.properties
 
               echo '******************************************'
               echo '******************************************'
@@ -116,7 +116,7 @@ spec:
               echo '******************************************'
               echo '******************************************'
 
-              python -u OrderCancellation.py
+              #BK python -u OrderCancellation.py
 
               echo '******************************************'
               echo '******************************************'
@@ -124,7 +124,7 @@ spec:
               echo '******************************************'
               echo '******************************************'
 
-              python -u ContainerAnomaly.py
+              #BK python -u ContainerAnomaly.py
 
               echo '****************************************************'
               echo '****************************************************'
@@ -132,7 +132,7 @@ spec:
               echo '****************************************************'
               echo '****************************************************'
 
-              python -u ContainerAnomalyDlq.py
+              #BK python -u ContainerAnomalyDlq.py
 
               echo
               echo 'END RESULTS:'
